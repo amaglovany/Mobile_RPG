@@ -9,7 +9,10 @@ public class ContactBlood : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.transform.tag != "Terrain") { return; }
+        if (!collision.transform.CompareTag("Terrain"))
+        {
+            return;
+        }
 
         Vector3 fixPosition = transform.position;
 

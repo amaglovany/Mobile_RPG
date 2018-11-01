@@ -25,8 +25,8 @@ public class SquadData : MonoBehaviourSingleton<SquadData>
 
     public int currentIndex = 0;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start()
     {
         for (int i = 0; i < listCharacter.Count; i++)
         {
@@ -36,9 +36,9 @@ public class SquadData : MonoBehaviourSingleton<SquadData>
 
         SwitchCharaster(0);
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -87,7 +87,10 @@ public class SquadData : MonoBehaviourSingleton<SquadData>
             }
         }
 
-        if (InventoryUI.Instance) { InventoryUI.Instance.SwitchInventory(listCharacter[index].inventory); }
+        if (InventoryUI.Instance)
+        {
+            InventoryUI.Instance.SwitchInventory(listCharacter[index].inventory);
+        }
 
         GameplayUI.Instance.HealthBarValueChange(playerData.playerHealth.currentHealth);
 

@@ -7,7 +7,6 @@ using UnityEngine;
 
 namespace ch.sycoforge.Decal.Editor
 {
-
     public class DSSDShaderGUI : ShaderGUI
     {
         //-----------------------------
@@ -22,15 +21,14 @@ namespace ch.sycoforge.Decal.Editor
         private MaterialEditor materialEditor;
 
 
-
         //-----------------------------
         // Methods
         //-----------------------------
         private void FindProperties(MaterialProperty[] props)
         {
-            this.albedoMap =     ShaderGUI.FindProperty(ShaderConstants.TEXTURE_DIFFUSE, props);
-            this.bumpMap =       ShaderGUI.FindProperty(ShaderConstants.TEXTURE_NORMAL, props);
-            this.emissionMap =   ShaderGUI.FindProperty(ShaderConstants.TEXTURE_EMISSION, props);
+            this.albedoMap = ShaderGUI.FindProperty(ShaderConstants.TEXTURE_DIFFUSE, props);
+            this.bumpMap = ShaderGUI.FindProperty(ShaderConstants.TEXTURE_NORMAL, props);
+            this.emissionMap = ShaderGUI.FindProperty(ShaderConstants.TEXTURE_EMISSION, props);
             this.specSmoothMap = ShaderGUI.FindProperty(ShaderConstants.TEXTURE_SPECSMOOTH, props);
         }
 
@@ -41,7 +39,10 @@ namespace ch.sycoforge.Decal.Editor
             Material material = materialEditor.target as Material;
             this.ShaderPropertiesGUI(material);
 
-            if (!this.firstTimeApply) { return; }
+            if (!this.firstTimeApply)
+            {
+                return;
+            }
 
             SetMaterialKeywords(material);
             this.firstTimeApply = false;
@@ -60,7 +61,7 @@ namespace ch.sycoforge.Decal.Editor
             this.DoEmissionArea(material);
 
 
-            if(EditorGUI.EndChangeCheck())
+            if (EditorGUI.EndChangeCheck())
             {
                 SetMaterialKeywords(material);
             }
@@ -68,22 +69,26 @@ namespace ch.sycoforge.Decal.Editor
 
         private void DoAlbedoArea(Material material)
         {
-            this.materialEditor.TexturePropertySingleLine(new GUIContent("Albedo", "Albedo (RGB) and Transparency (A)"), this.albedoMap, null);
+            this.materialEditor.TexturePropertySingleLine(new GUIContent("Albedo", "Albedo (RGB) and Transparency (A)"),
+                this.albedoMap, null);
         }
 
         private void DoNormalArea(Material material)
         {
-            this.materialEditor.TexturePropertySingleLine(new GUIContent("Normal Map", "Normal Map (RGB)"), this.bumpMap, null);
+            this.materialEditor.TexturePropertySingleLine(new GUIContent("Normal Map", "Normal Map (RGB)"),
+                this.bumpMap, null);
         }
 
         private void DoSpecSmoothArea(Material material)
         {
-            this.materialEditor.TexturePropertySingleLine(new GUIContent("Specular Smoothness", "Specular (RGB) Smoothness (A)"), this.specSmoothMap, null);
+            this.materialEditor.TexturePropertySingleLine(
+                new GUIContent("Specular Smoothness", "Specular (RGB) Smoothness (A)"), this.specSmoothMap, null);
         }
 
         private void DoEmissionArea(Material material)
         {
-            this.materialEditor.TexturePropertySingleLine(new GUIContent("Emission", "Emission (RGB)"), this.emissionMap, null);
+            this.materialEditor.TexturePropertySingleLine(new GUIContent("Emission", "Emission (RGB)"),
+                this.emissionMap, null);
         }
 
         private static void SetMaterialKeywords(Material material)
@@ -91,10 +96,14 @@ namespace ch.sycoforge.Decal.Editor
             SetKeyword(material, "_Blend", true);
             SetKeyword(material, "_AlphaTest", false);
 
-            SetKeyword(material, ShaderConstants.KEYWORD_NORMAL, material.GetTexture(ShaderConstants.TEXTURE_NORMAL) != null);
-            SetKeyword(material, ShaderConstants.KEYWORD_DIFFUSE, material.GetTexture(ShaderConstants.TEXTURE_DIFFUSE) != null);
-            SetKeyword(material, ShaderConstants.KEYWORD_SPECSMOOTH, material.GetTexture(ShaderConstants.TEXTURE_SPECSMOOTH) != null);
-            SetKeyword(material, ShaderConstants.KEYWORD_EMISSION, material.GetTexture(ShaderConstants.TEXTURE_EMISSION) != null);
+            SetKeyword(material, ShaderConstants.KEYWORD_NORMAL,
+                material.GetTexture(ShaderConstants.TEXTURE_NORMAL) != null);
+            SetKeyword(material, ShaderConstants.KEYWORD_DIFFUSE,
+                material.GetTexture(ShaderConstants.TEXTURE_DIFFUSE) != null);
+            SetKeyword(material, ShaderConstants.KEYWORD_SPECSMOOTH,
+                material.GetTexture(ShaderConstants.TEXTURE_SPECSMOOTH) != null);
+            SetKeyword(material, ShaderConstants.KEYWORD_EMISSION,
+                material.GetTexture(ShaderConstants.TEXTURE_EMISSION) != null);
         }
 
         private static void SetKeyword(Material m, string keyword, bool state)

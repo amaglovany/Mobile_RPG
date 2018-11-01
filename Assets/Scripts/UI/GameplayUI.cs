@@ -32,8 +32,7 @@ public class GameplayUI : MonoBehaviour
     [SerializeField] private GameObject[] weaponUI;
     [SerializeField] private GameObject attackFistsGO;
 
-    [Header("Special Attack")]
-    public Button buttonSpecialAttack;
+    [Header("Special Attack")] public Button buttonSpecialAttack;
     public Image iconSpecialAttack;
     public Sprite specialAttackEnable;
     public Sprite specialAttackDisable;
@@ -89,7 +88,7 @@ public class GameplayUI : MonoBehaviour
         Camera();
         SpecialAttackControl();
 
-        if(Input.GetKey(KeyCode.V))
+        if (Input.GetKey(KeyCode.V))
         {
             Block(true);
         }
@@ -216,7 +215,6 @@ public class GameplayUI : MonoBehaviour
             iconSpecialAttack.sprite = specialAttackDisable;
             buttonSpecialAttack.interactable = false;
         }
-        
     }
 
     #endregion
@@ -518,7 +516,7 @@ public class GameplayUI : MonoBehaviour
     {
         for (int i = 0; i < listCharacterButtons.Count; i++)
         {
-            if(i == SquadData.Instance.currentIndex)
+            if (i == SquadData.Instance.currentIndex)
             {
                 listCharacterButtons[i].interactable = false;
             }

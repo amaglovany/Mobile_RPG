@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviourSingleton<PlayerData>
 {
-    [Header("Data")]
-    public CameraControl cameraControl;
+    [Header("Data")] public CameraControl cameraControl;
     public bool inBattle;
     public bool bareHands;
 
@@ -61,7 +60,7 @@ public class PlayerData : MonoBehaviourSingleton<PlayerData>
         Locomotion();
         LockTargetControl();
 
-        if(Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             locomotion.SwitchCrouch();
         }
@@ -250,7 +249,7 @@ public class PlayerData : MonoBehaviourSingleton<PlayerData>
     {
         // Disabling "Previous", if it was, and Enabling "New"
         if (currentWeaponGO != null)
-        {       
+        {
             currentWeaponGO.SetActive(false);
         }
 
@@ -291,19 +290,28 @@ public class PlayerData : MonoBehaviourSingleton<PlayerData>
 
     public void CalculateAttackSpeedWeapon()
     {
-        if (!locomotion) { return; }
+        if (!locomotion)
+        {
+            return;
+        }
 
-        if(!currentWeaponData)
+        if (!currentWeaponData)
         {
             locomotion.animator.SetFloat("Attack_Speed", 1f);
             return;
         }
 
-        switch(currentWeaponData.weaponData.Speed)
+        switch (currentWeaponData.weaponData.Speed)
         {
-            case Weapon.SpeedEnum.Fast: locomotion.animator.SetFloat("Attack_Speed", 1.2f); break;
-            case Weapon.SpeedEnum.Normal: locomotion.animator.SetFloat("Attack_Speed", 1f); break;
-            case Weapon.SpeedEnum.Slow: locomotion.animator.SetFloat("Attack_Speed", 0.8f); break;
+            case Weapon.SpeedEnum.Fast:
+                locomotion.animator.SetFloat("Attack_Speed", 1.2f);
+                break;
+            case Weapon.SpeedEnum.Normal:
+                locomotion.animator.SetFloat("Attack_Speed", 1f);
+                break;
+            case Weapon.SpeedEnum.Slow:
+                locomotion.animator.SetFloat("Attack_Speed", 0.8f);
+                break;
         }
     }
 

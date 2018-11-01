@@ -118,11 +118,11 @@ public class Inventory : MonoBehaviour
     {
         var weaponToEquip = items[weaponSlotIndex] as Weapon;
 
-        if(equipSlotIndex == 0)
+        if (equipSlotIndex == 0)
         {
             firstIndexWeapon = weaponToEquip;
         }
-        else if(equipSlotIndex == 1)
+        else if (equipSlotIndex == 1)
         {
             secondIndexWeapon = weaponToEquip;
         }

@@ -21,7 +21,7 @@ public class DissolveByLine : MonoBehaviour
     [SerializeField] private string interpolateName = "_Interpolation";
 
     // Update is called once per frame
-    void Update ()
+    void Update()
     {
         if (origin == null || target == null) return;
 

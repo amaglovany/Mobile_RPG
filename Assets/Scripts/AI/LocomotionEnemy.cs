@@ -40,10 +40,11 @@ public class LocomotionEnemy : Locomotion
     {
         if (typeLocomotion == TLocomotion.Damage)
         {
-            if(!healthEnemy.enemyWeaponData)
+            if (!healthEnemy.enemyWeaponData)
             {
                 aiBattle.OffHandsCollider();
             }
+
             return;
         }
 
@@ -64,26 +65,34 @@ public class LocomotionEnemy : Locomotion
             }
         }
 
-        if (healthEnemy.enemyWeaponData) { healthEnemy.enemyWeaponData.PlaySound(); }
+        if (healthEnemy.enemyWeaponData)
+        {
+            healthEnemy.enemyWeaponData.PlaySound();
+        }
     }
 
     public void AttackRightFist()
     {
-        if (typeLocomotion == TLocomotion.Damage) { return; }
+        if (typeLocomotion == TLocomotion.Damage)
+        {
+            return;
+        }
 
         aiBattle.SwitchRightHandCollider();
     }
 
     public void AttackLeftFist()
     {
-        if (typeLocomotion == TLocomotion.Damage) { return; }
+        if (typeLocomotion == TLocomotion.Damage)
+        {
+            return;
+        }
 
         aiBattle.SwitchLeftHandCollider();
     }
 
     public void AttackKick()
     {
-
     }
 
     public override void RangeAttack()
@@ -104,8 +113,15 @@ public class LocomotionEnemy : Locomotion
     public void DisarmWeapon()
     {
         print("Disarm");
-        if (!healthEnemy.enemyWeaponData) { return; }
-        if (typeLocomotion != TLocomotion.Block) { return; }
+        if (!healthEnemy.enemyWeaponData)
+        {
+            return;
+        }
+
+        if (typeLocomotion != TLocomotion.Block)
+        {
+            return;
+        }
 
         Destroy(healthEnemy.enemyWeaponData.gameObject);
         healthEnemy.enemyWeaponData = null;

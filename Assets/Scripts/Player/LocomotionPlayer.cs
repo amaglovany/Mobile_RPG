@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class LocomotionPlayer : Locomotion
 {
-    [Space]
-    public int specialPower;
+    [Space] public int specialPower;
 
     public override void AttackControl()
     {
@@ -12,7 +11,10 @@ public class LocomotionPlayer : Locomotion
 
     public override void SpecialAttack()
     {
-        if (specialPower < 100) { return; }
+        if (specialPower < 100)
+        {
+            return;
+        }
 
         animator.SetTrigger(ATTACK_STATE_SPECIAL);
 
@@ -21,7 +23,10 @@ public class LocomotionPlayer : Locomotion
 
     public override void Attack()
     {
-        if (typeLocomotion == TLocomotion.Damage) { return; }
+        if (typeLocomotion == TLocomotion.Damage)
+        {
+            return;
+        }
 
         // When Player attacks
         PlayerData.Instance.SwitchWeaponColliders();
@@ -30,7 +35,10 @@ public class LocomotionPlayer : Locomotion
 
     public void AttackRightFist()
     {
-        if (typeLocomotion == TLocomotion.Damage) { return; }
+        if (typeLocomotion == TLocomotion.Damage)
+        {
+            return;
+        }
 
         PlayerData.Instance.SwitchRightHandCollider();
         DisableCrouch();
@@ -38,7 +46,10 @@ public class LocomotionPlayer : Locomotion
 
     public void AttackLeftFist()
     {
-        if (typeLocomotion == TLocomotion.Damage) { return; }
+        if (typeLocomotion == TLocomotion.Damage)
+        {
+            return;
+        }
 
         PlayerData.Instance.SwitchLeftHandCollider();
         DisableCrouch();
@@ -46,15 +57,18 @@ public class LocomotionPlayer : Locomotion
 
     private void AttackKick()
     {
-        if (typeLocomotion == TLocomotion.Damage) { return; }
+        if (typeLocomotion == TLocomotion.Damage)
+        {
+            return;
+        }
 
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
 
-        if(Physics.Raycast(ray, out hit, 1f))
+        if (Physics.Raycast(ray, out hit, 1f))
         {
             print(hit.transform.name);
-            if(hit.transform.tag == "EnemyZombie")
+            if (hit.transform.CompareTag("EnemyZombie"))
             {
                 hit.transform.GetComponent<HealthEnemy>().Damage(5, null);
                 hit.transform.GetComponent<LocomotionEnemy>().DisarmWeapon();

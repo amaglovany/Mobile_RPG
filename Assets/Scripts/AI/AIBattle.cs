@@ -41,7 +41,7 @@ public class AIBattle : MonoBehaviour
     {
         ViewControl();
 
-        if(target && !target.gameObject.activeSelf)
+        if (target && !target.gameObject.activeSelf)
         {
             target = PlayerData.Instance.locomotion.transform;
         }
@@ -89,14 +89,15 @@ public class AIBattle : MonoBehaviour
         fixDirection = (agent.steeringTarget - transform.position).normalized;
         locomotion.Rotate(fixDirection);
 
-        if (Vector3.Distance(target.position, transform.position) >= Mathf.Clamp(maxDistanceAttack + (agent.stoppingDistance - optionDistance), 0, 10))
+        if (Vector3.Distance(target.position, transform.position) >=
+            Mathf.Clamp(maxDistanceAttack + (agent.stoppingDistance - optionDistance), 0, 10))
         {
             if (healthEnemy.awakeWeapon && healthEnemy.awakeWeapon.rangeAttack)
             {
                 currentTimerAttack += Time.deltaTime;
                 locomotion.targetLocomotion = target.GetComponent<Locomotion>();
 
-                if(currentTimerAttack >= delayAttack)
+                if (currentTimerAttack >= delayAttack)
                 {
                     locomotion.RangeAttackControl();
                     currentTimerAttack = 0;
@@ -143,7 +144,7 @@ public class AIBattle : MonoBehaviour
 
                 currentTimerAttack = 0;
 
-                if(Random.Range(0, 101) >= 80)
+                if (Random.Range(0, 101) >= 80)
                 {
                     currentIntervalBlock = Random.Range(2, 4);
                 }
@@ -177,7 +178,6 @@ public class AIBattle : MonoBehaviour
     {
         SetKinematic(!value);
         GetComponent<Animator>().enabled = !value;
-
     }
 
     public void SwitchRightHandCollider()

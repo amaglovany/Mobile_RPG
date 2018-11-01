@@ -88,7 +88,10 @@ public class SpawnManager : MonoBehaviour
     {
         var healthEnemy = enemy.GetComponentInChildren<HealthEnemy>();
 
-        if (!healthEnemy.randomWeapon) { return; }
+        if (!healthEnemy.randomWeapon)
+        {
+            return;
+        }
 
         // Clearing equipped weapon
         foreach (Transform child in healthEnemy.enemyWeaponParentTransform)
@@ -99,18 +102,19 @@ public class SpawnManager : MonoBehaviour
         // Generating random weapon data and assigning it's elements to enemy
         Weapon newWeapon = null;
 
-        if(healthEnemy.awakeWeapon)
+        if (healthEnemy.awakeWeapon)
         {
             newWeapon = healthEnemy.awakeWeapon;
         }
         else
         {
-            newWeapon = (Weapon)LootGenerator.Instance.GenerateRandomWeapon();
+            newWeapon = (Weapon) LootGenerator.Instance.GenerateRandomWeapon();
         }
 
         GameObject newWeaponGO = Instantiate(newWeapon.itemActivePrefab, healthEnemy.enemyWeaponParentTransform);
 
-        healthEnemy.locomotion.SetIndexWeaponAnimator(newWeaponGO.GetComponent<WeaponData>().weaponData.animatorIDWeapon);
+        healthEnemy.locomotion.SetIndexWeaponAnimator(
+            newWeaponGO.GetComponent<WeaponData>().weaponData.animatorIDWeapon);
         healthEnemy.enemyWeaponData = newWeaponGO.GetComponent<WeaponData>();
         healthEnemy.enemyWeaponData.weaponData = newWeaponGO.GetComponent<WeaponData>().weaponData;
     }

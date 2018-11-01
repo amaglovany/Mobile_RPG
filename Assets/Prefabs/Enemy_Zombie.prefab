@@ -3788,6 +3788,7 @@ MonoBehaviour:
   floorBloodDecal: {fileID: 1709263232819384, guid: d1955f3ed56769d44914c3c9e757b32d,
     type: 2}
   randomWeapon: 1
+  awakeWeapon: {fileID: 0}
   enemyWeaponData: {fileID: 0}
   enemyWeaponParentTransform: {fileID: 4095464525869836}
   passiveEnemyWeaponGO: {fileID: 0}
@@ -3887,7 +3888,7 @@ MonoBehaviour:
   surfaceRotation: 0
   quality: 3
   sharedMesh: {fileID: 0}
-  instanceID: -7526
+  instanceID: -25938
 --- !u!114 &114104376914045810
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3934,6 +3935,7 @@ MonoBehaviour:
   viewTrigger: {fileID: 114286284656136110}
   rightHandFist: {fileID: 1380934836603718}
   leftHandFist: {fileID: 1964157445271478}
+  maxDistanceAttack: 0
   delayAttack: 1.2
   intervalBlock: 0
 --- !u!114 &114238770495529934
@@ -4102,7 +4104,7 @@ MonoBehaviour:
   surfaceRotation: 0
   quality: 3
   sharedMesh: {fileID: 0}
-  instanceID: -7520
+  instanceID: -25932
 --- !u!114 &114469354785925220
 MonoBehaviour:
   m_ObjectHideFlags: 1

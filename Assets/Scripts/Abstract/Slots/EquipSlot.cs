@@ -7,12 +7,11 @@ public abstract class EquipSlot : Slot
     public override void Select()
     {
         base.Select();
-        
+
         if (slotItem != null)
         {
             if (PlayerData.Instance.inventory.equipMode)
             {
-                
             }
             else
             {

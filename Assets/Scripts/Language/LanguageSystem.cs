@@ -18,11 +18,11 @@ public class LanguageSystem : MonoBehaviourSingleton<LanguageSystem>
     {
         for (int i = 0; i < listLanguage.Count; i++)
         {
-            if(listLanguage[i].type == typeLanguage)
+            if (listLanguage[i].type == typeLanguage)
             {
-                for (int w=0; w<listLanguage[i].listWords.Count; w++)
+                for (int w = 0; w < listLanguage[i].listWords.Count; w++)
                 {
-                    if(listLanguage[i].listWords[w].tag == tag)
+                    if (listLanguage[i].listWords[w].tag == tag)
                     {
                         return listLanguage[i].listWords[w].text;
                     }

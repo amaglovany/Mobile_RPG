@@ -7,12 +7,14 @@ namespace UnitySA.Utility
     [Serializable]
     public class FOVZoom
     {
-        public Camera Camera;                           // optional camera setup, if null the main camera will be used
-        [HideInInspector]
-        public float originalFov;     // the original fov
-        public float FOVIncrease = 3f;                  // the amount the field of view increases when going into a run
-        public float TimeToIncrease = 1f;               // the amount of time the field of view will increase over
-        public float TimeToDecrease = 1f;               // the amount of time the field of view will take to return to its original size
+        public Camera Camera; // optional camera setup, if null the main camera will be used
+        [HideInInspector] public float originalFov; // the original fov
+        public float FOVIncrease = 3f; // the amount the field of view increases when going into a run
+        public float TimeToIncrease = 1f; // the amount of time the field of view will increase over
+
+        public float
+            TimeToDecrease = 1f; // the amount of time the field of view will take to return to its original size
+
         public AnimationCurve IncreaseCurve;
 
 
@@ -67,6 +69,7 @@ namespace UnitySA.Utility
                 t -= Time.deltaTime;
                 yield return new WaitForEndOfFrame();
             }
+
             //make sure that fov returns to the original size
             Camera.fieldOfView = originalFov;
         }

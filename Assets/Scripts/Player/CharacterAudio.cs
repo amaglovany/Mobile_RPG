@@ -20,7 +20,10 @@ public class CharacterAudio : MonoBehaviour
 
     public void PlayHit()
     {
-        if (!hitAudioSource.isPlaying) { hitAudioSource.PlayOneShot(hitAudioClipList[Random.Range(0, hitAudioClipList.Count)]); }
+        if (!hitAudioSource.isPlaying)
+        {
+            hitAudioSource.PlayOneShot(hitAudioClipList[Random.Range(0, hitAudioClipList.Count)]);
+        }
     }
 
     public void PlayDeath()

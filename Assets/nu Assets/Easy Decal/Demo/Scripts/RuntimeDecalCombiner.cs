@@ -13,7 +13,6 @@ public class RuntimeDecalCombiner
     /// <remarks>The decals need to have an Atlas as Source</remarks>
     public static List<GameObject> Combine(IList<EasyDecal> decals)
     {
-        
         Dictionary<DecalTextureAtlas, List<EasyDecal>> mappings = new Dictionary<DecalTextureAtlas, List<EasyDecal>>();
 
         foreach (EasyDecal decal in decals)
@@ -46,7 +45,7 @@ public class RuntimeDecalCombiner
                 {
                     GameObject combined = Combine(decals, atlas);
 
-                    if(combined != null)
+                    if (combined != null)
                     {
                         roots.Add(combined);
                     }

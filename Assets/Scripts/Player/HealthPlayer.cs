@@ -26,7 +26,7 @@ public class HealthPlayer : Health
     {
         if (!CheatManager.Instance.GOD_MODE)
         {
-                base.Damage(damageValue, weaponData, anim);
+            base.Damage(damageValue, weaponData, anim);
 
             // Custom implementation
             GameplayUI.Instance.HealthBarValueChange(currentHealth);
@@ -47,7 +47,7 @@ public class HealthPlayer : Health
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.tag == "Fists" && !isDead)
+        if (collider.gameObject.CompareTag("Fists") && !isDead)
         {
             Damage(5, null);
 

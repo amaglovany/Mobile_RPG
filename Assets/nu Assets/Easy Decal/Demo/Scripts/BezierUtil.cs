@@ -14,7 +14,8 @@ namespace ch.sycoforge.Decal.Demo
         /// <param name="radius">The max radius.</param>
         /// <param name="angleThreshold">The angular threshold specifying when to skip a segment.</param>
         /// <returns></returns>
-        public static List<Vector3> InterpolatePath(List<Vector3> path, int segments, float radius, float angleThreshold)
+        public static List<Vector3> InterpolatePath(List<Vector3> path, int segments, float radius,
+            float angleThreshold)
         {
             if (path.Count >= 3)
             {
@@ -61,7 +62,6 @@ namespace ch.sycoforge.Decal.Demo
                     Vector3 p2 = center + ce * ceLen;
 
 
-
                     float t;
                     float ti;
                     Vector3 position;
@@ -100,9 +100,10 @@ namespace ch.sycoforge.Decal.Demo
             Vector3[] points = new Vector3[outputSegmentCount + 1];
             for (int i = 0; i < outputSegmentCount; i++)
             {
-                float t = (float)i / outputSegmentCount;
+                float t = (float) i / outputSegmentCount;
                 points[i] = GetBezierPoint(t, controlPoints, 0, controlPoints.Length);
             }
+
             return points;
         }
 
@@ -112,14 +113,15 @@ namespace ch.sycoforge.Decal.Demo
             {
                 return controlPoints[index];
             }
+
             var p0 = GetBezierPoint(t, controlPoints, index - 1, count - 1);
             var p1 = GetBezierPoint(t, controlPoints, index, count - 1);
             var p2 = GetBezierPoint(t, controlPoints, index + 1, count - 1);
 
 
             Vector3 position = (1.0f - t) * (1.0f - t) * p0
-               + 2.0f * (1.0f - t) * t * p1
-               + t * t * p2;
+                               + 2.0f * (1.0f - t) * t * p1
+                               + t * t * p2;
             return position;
         }
     }

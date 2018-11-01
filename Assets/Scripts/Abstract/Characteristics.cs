@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class Characteristics : MonoBehaviour
 {
-    [Header("Characteristics")]
-    [Range(1, 10)] public int Streanght = 1;
+    [Header("Characteristics")] [Range(1, 10)]
+    public int Streanght = 1;
 }

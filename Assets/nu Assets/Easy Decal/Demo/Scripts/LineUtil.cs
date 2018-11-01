@@ -8,7 +8,10 @@ namespace ch.sycoforge.Decal.Demo
     {
         public static void DrawPath(float thickness, Material material, List<Vector3> path)
         {
-            if (path == null || (path != null && path.Count < 2)) { return; }
+            if (path == null || (path != null && path.Count < 2))
+            {
+                return;
+            }
 
             if (thickness <= Mathf.Epsilon)
             {

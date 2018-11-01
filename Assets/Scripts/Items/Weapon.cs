@@ -24,7 +24,7 @@ public class Weapon : ItemEquipment
         Normal = 1,
         Slow = 2
     }
-    
+
     public DamageTypeEnum DamageType;
 
     public int animatorIDWeapon = 0;

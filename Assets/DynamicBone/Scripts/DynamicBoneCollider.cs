@@ -5,12 +5,12 @@ public class DynamicBoneCollider : DynamicBoneColliderBase
 {
 #if UNITY_5
 	[Tooltip("The radius of the sphere or capsule.")]
-#endif	
+#endif
     public float m_Radius = 0.5f;
-	
+
 #if UNITY_5
 	[Tooltip("The height of the capsule.")]
-#endif		
+#endif
     public float m_Height = 0;
 
     void OnValidate()
@@ -50,14 +50,18 @@ public class DynamicBoneCollider : DynamicBoneColliderBase
                     c1.z += h;
                     break;
             }
+
             if (m_Bound == Bound.Outside)
-                OutsideCapsule(ref particlePosition, particleRadius, transform.TransformPoint(c0), transform.TransformPoint(c1), radius);
+                OutsideCapsule(ref particlePosition, particleRadius, transform.TransformPoint(c0),
+                    transform.TransformPoint(c1), radius);
             else
-                InsideCapsule(ref particlePosition, particleRadius, transform.TransformPoint(c0), transform.TransformPoint(c1), radius);
+                InsideCapsule(ref particlePosition, particleRadius, transform.TransformPoint(c0),
+                    transform.TransformPoint(c1), radius);
         }
     }
 
-    static void OutsideSphere(ref Vector3 particlePosition, float particleRadius, Vector3 sphereCenter, float sphereRadius)
+    static void OutsideSphere(ref Vector3 particlePosition, float particleRadius, Vector3 sphereCenter,
+        float sphereRadius)
     {
         float r = sphereRadius + particleRadius;
         float r2 = r * r;
@@ -72,7 +76,8 @@ public class DynamicBoneCollider : DynamicBoneColliderBase
         }
     }
 
-    static void InsideSphere(ref Vector3 particlePosition, float particleRadius, Vector3 sphereCenter, float sphereRadius)
+    static void InsideSphere(ref Vector3 particlePosition, float particleRadius, Vector3 sphereCenter,
+        float sphereRadius)
     {
         float r = sphereRadius - particleRadius;
         float r2 = r * r;
@@ -87,7 +92,8 @@ public class DynamicBoneCollider : DynamicBoneColliderBase
         }
     }
 
-    static void OutsideCapsule(ref Vector3 particlePosition, float particleRadius, Vector3 capsuleP0, Vector3 capsuleP1, float capsuleRadius)
+    static void OutsideCapsule(ref Vector3 particlePosition, float particleRadius, Vector3 capsuleP0, Vector3 capsuleP1,
+        float capsuleRadius)
     {
         float r = capsuleRadius + particleRadius;
         float r2 = r * r;
@@ -134,7 +140,8 @@ public class DynamicBoneCollider : DynamicBoneColliderBase
         }
     }
 
-    static void InsideCapsule(ref Vector3 particlePosition, float particleRadius, Vector3 capsuleP0, Vector3 capsuleP1, float capsuleRadius)
+    static void InsideCapsule(ref Vector3 particlePosition, float particleRadius, Vector3 capsuleP0, Vector3 capsuleP1,
+        float capsuleRadius)
     {
         float r = capsuleRadius - particleRadius;
         float r2 = r * r;
@@ -216,6 +223,7 @@ public class DynamicBoneCollider : DynamicBoneColliderBase
                     c1.z += h;
                     break;
             }
+
             Gizmos.DrawWireSphere(transform.TransformPoint(c0), radius);
             Gizmos.DrawWireSphere(transform.TransformPoint(c1), radius);
         }

@@ -20,9 +20,7 @@ public abstract class Locomotion : Characteristics
         Run
     }
 
-    [Header("Locomotion")]
-    [Space]
-    public Animator animator;
+    [Header("Locomotion")] [Space] public Animator animator;
 
     [Tooltip("Health reference")] public Health health;
 
@@ -119,14 +117,17 @@ public abstract class Locomotion : Characteristics
 
     private void HeightControl()
     {
-        if (listSupport.Count == 0) { return; }
+        if (listSupport.Count == 0)
+        {
+            return;
+        }
 
         RaycastHit hit;
         int failCounter = 0;
 
         for (int i = 0; i < listSupport.Count; i++)
         {
-            if(Physics.Raycast(listSupport[i].position, Vector3.down, out hit, 0.7f))
+            if (Physics.Raycast(listSupport[i].position, Vector3.down, out hit, 0.7f))
             {
             }
             else
@@ -135,13 +136,13 @@ public abstract class Locomotion : Characteristics
             }
         }
 
-        if(failCounter >= listSupport.Count)
+        if (failCounter >= listSupport.Count)
         {
             animator.applyRootMotion = false;
             animator.SetBool("Fail", true);
             failTimer += Time.deltaTime;
         }
-        else if(failCounter == 0)
+        else if (failCounter == 0)
         {
             if (animator.GetBool("Fail") == true && failTimer >= 0.25f)
             {
@@ -165,17 +166,14 @@ public abstract class Locomotion : Characteristics
 
     public virtual void SpecialAttack()
     {
-
     }
 
     public virtual void RangeAttackControl()
     {
-
     }
 
     public virtual void RangeAttack()
     {
-        
     }
 
     private void ControlState()
@@ -209,7 +207,7 @@ public abstract class Locomotion : Characteristics
             typeLocomotion = TLocomotion.Dead;
         }
 
-        if(targetLocomotion)
+        if (targetLocomotion)
         {
             animator.SetBool("Dodge", true);
         }

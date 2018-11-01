@@ -19,13 +19,16 @@ public class HealPoint : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!activeObj.activeSelf) { return; }
+        if (!activeObj.activeSelf)
+        {
+            return;
+        }
 
-        if(other.transform.tag == "Player")
+        if (other.transform.CompareTag("Player"))
         {
             HealthPlayer hPlayer = other.transform.GetComponent<HealthPlayer>();
 
-            if(hPlayer.currentHealth < hPlayer.maxHealth)
+            if (hPlayer.currentHealth < hPlayer.maxHealth)
             {
                 Activate(hPlayer);
             }

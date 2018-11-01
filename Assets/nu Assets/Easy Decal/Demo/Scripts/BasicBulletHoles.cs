@@ -27,7 +27,9 @@ namespace ch.sycoforge.Decal.Demo
                 Debug.LogError("The DynamicDemo script has no decal prefab attached.");
             }
         }
+
         bool t = false;
+
         public void Update()
         {
             if (Input.GetMouseButtonUp(0))
@@ -46,13 +48,14 @@ namespace ch.sycoforge.Decal.Demo
                     //EasyDecal.ProjectAt(DecalPrefab.gameObject, hit.collider.gameObject, hit.point, -mouseRay.direction.normalized);
 
                     // Instantiate the decal prefab according the hit normal
-                    EasyDecal decal = EasyDecal.ProjectAt(DecalPrefab.gameObject, hit.collider.gameObject, hit.point, hit.normal);
+                    EasyDecal decal = EasyDecal.ProjectAt(DecalPrefab.gameObject, hit.collider.gameObject, hit.point,
+                        hit.normal);
 
                     t = !t;
 
-                    if(t)
+                    if (t)
                     {
-                        decal.CancelFade();                            
+                        decal.CancelFade();
                     }
                 }
             }

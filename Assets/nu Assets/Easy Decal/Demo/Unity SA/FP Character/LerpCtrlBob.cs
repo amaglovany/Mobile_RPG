@@ -39,6 +39,7 @@ namespace UnitySA.Utility
                 t += Time.deltaTime;
                 yield return new WaitForFixedUpdate();
             }
+
             m_Offset = 0f;
         }
     }

@@ -2309,6 +2309,7 @@ MonoBehaviour:
   viewTrigger: {fileID: 114964420431902080}
   rightHandFist: {fileID: 1773399913768192}
   leftHandFist: {fileID: 1474719890004758}
+  maxDistanceAttack: 0
   delayAttack: 1.2
   intervalBlock: 0
 --- !u!114 &114564028122116462
@@ -2340,6 +2341,7 @@ MonoBehaviour:
   floorBloodDecal: {fileID: 1709263232819384, guid: d1955f3ed56769d44914c3c9e757b32d,
     type: 2}
   randomWeapon: 1
+  awakeWeapon: {fileID: 0}
   enemyWeaponData: {fileID: 0}
   enemyWeaponParentTransform: {fileID: 4057457240470120}
   passiveEnemyWeaponGO: {fileID: 0}

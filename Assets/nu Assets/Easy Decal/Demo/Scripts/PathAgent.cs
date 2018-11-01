@@ -20,15 +20,14 @@ namespace ch.sycoforge.Decal.Demo
         //Path thickness in units
         public float PathThickness = 1f;
 
-        [Tooltip("Distance from the ground.")]
-        public float NormalPathOffset;
+        [Tooltip("Distance from the ground.")] public float NormalPathOffset;
 
-        [Tooltip("Max radius between segments.")]
-        [Range(0.001f, 0.5f)]
+        [Tooltip("Max radius between segments.")] [Range(0.001f, 0.5f)]
         public float Radius = 0.25f;
 
         [Tooltip("Discard segments when their angle is smaller than this value.")]
         public float AngleThreshold = 5;
+
         public bool DrawGizmos;
         public EasyDecal TargetAimDecal;
         public GameObject TargetPointDecalPrefab;
@@ -74,7 +73,8 @@ namespace ch.sycoforge.Decal.Demo
                 {
                     agent.SetDestination(hit.point);
 
-                    EasyDecal.ProjectAt(TargetPointDecalPrefab, hit.collider.gameObject, hit.point + decalOffset, Quaternion.identity);
+                    EasyDecal.ProjectAt(TargetPointDecalPrefab, hit.collider.gameObject, hit.point + decalOffset,
+                        Quaternion.identity);
                 }
             }
         }
@@ -99,16 +99,15 @@ namespace ch.sycoforge.Decal.Demo
                         int length = path.corners.Length;
 
 
-
                         Vector3 normal = transform.up;
 
                         for (int i = 0; i < length; i++)
-                        {                           
+                        {
                             if (i > 0 && NormalPathOffset > 0)
                             {
                                 RaycastHit h;
 
-                                if(Physics.Raycast(path.corners[i], Vector3.down, out h, NormalPathOffset * 10))
+                                if (Physics.Raycast(path.corners[i], Vector3.down, out h, NormalPathOffset * 10))
                                 {
                                     normal = hit.normal;
                                 }
@@ -122,14 +121,14 @@ namespace ch.sycoforge.Decal.Demo
                         Vector3[] points = BezierUtil.InterpolatePath(this.path, 10, Radius, AngleThreshold).ToArray();
 
                         lineRenderer.SetVertexCount(points.Length);
-                        #if UNITY_5_2
+#if UNITY_5_2
                         for (int i = 0; i < points.Length; i++ )
                         {
                             lineRenderer.SetPosition(i, points[i]);
                         }
                         #else
                         lineRenderer.SetPositions(points);
-                        #endif
+#endif
 
                         TargetAimDecal.gameObject.SetActive(true);
                         TargetAimDecal.gameObject.transform.position = path.corners[length - 1] + decalOffset;

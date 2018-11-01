@@ -51,8 +51,12 @@ public class InventoryUI : MonoBehaviour
     {
         switch (index)
         {
-            case 0: typeCategory = TCategory.Weapon; break;
-            case 1: typeCategory = TCategory.Other; break;
+            case 0:
+                typeCategory = TCategory.Weapon;
+                break;
+            case 1:
+                typeCategory = TCategory.Other;
+                break;
         }
 
 
@@ -92,8 +96,15 @@ public class InventoryUI : MonoBehaviour
 
     private void OnEnable()
     {
-        if (!PlayerData.Instance) { return; }
-        if (!PlayerData.Instance.inventory) { return; }
+        if (!PlayerData.Instance)
+        {
+            return;
+        }
+
+        if (!PlayerData.Instance.inventory)
+        {
+            return;
+        }
 
         UpdateInventoryUI();
         StopWeaponEquipment();
@@ -208,8 +219,9 @@ public class InventoryUI : MonoBehaviour
 
     #region EquipZone
 
-    [Header("Control Area")]
-    [SerializeField] private Button useButton;
+    [Header("Control Area")] [SerializeField]
+    private Button useButton;
+
     [SerializeField] private Button equipButton;
     [SerializeField] private Button unEquipButton;
 
@@ -246,14 +258,16 @@ public class InventoryUI : MonoBehaviour
         if (PlayerData.Instance.inventory.equipMode && equipWeaponSlot.slotItem == null)
         {
             equipWeaponSlot.FillSlot(inventorySlots[GetCurrentInventorySlotIndex()].slotItem);
-            PlayerData.Instance.inventory.EquipWeapon(GetCurrentInventorySlotIndex(), equipWeaponSlot.equipWeaponSlotIndex);
+            PlayerData.Instance.inventory.EquipWeapon(GetCurrentInventorySlotIndex(),
+                equipWeaponSlot.equipWeaponSlotIndex);
 
             StopWeaponEquipment();
         }
         // Behaviour - If we want to replace weapon by another
         else if (PlayerData.Instance.inventory.equipMode && equipWeaponSlot.slotItem != null)
         {
-            PlayerData.Instance.inventory.SwapWeapons(GetCurrentInventorySlotIndex(), equipWeaponSlot.equipWeaponSlotIndex);
+            PlayerData.Instance.inventory.SwapWeapons(GetCurrentInventorySlotIndex(),
+                equipWeaponSlot.equipWeaponSlotIndex);
             //equipWeaponSlot.FillSlot(inventorySlots[GetCurrentInventorySlotIndex()].slotItem);
 
             StopWeaponEquipment();

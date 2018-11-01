@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class HealthEnemy : Health
 {
-    [Header("Data")]
-    public bool randomWeapon = true;
+    [Header("Data")] public bool randomWeapon = true;
     public Weapon awakeWeapon;
 
     public WeaponData enemyWeaponData;
@@ -158,7 +157,11 @@ public class HealthEnemy : Health
             ContainerGenerator.Instance.containerCorpsePrefab,
             containerPlaceTransform, enemyType);
 
-        if (enemyWeaponData) { ContainerGenerator.Instance.AddToContainer(enemyContainer, enemyWeaponData.weaponData); }
+        if (enemyWeaponData)
+        {
+            ContainerGenerator.Instance.AddToContainer(enemyContainer, enemyWeaponData.weaponData);
+        }
+
         ((ContainerCorpse) enemyContainer).associatedEnemyWeapon = passiveEnemyWeaponGO;
 
         yield return new WaitForSeconds(delay);

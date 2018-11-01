@@ -9,35 +9,20 @@ namespace UnitySA.Characters.FirstPerson
     [RequireComponent(typeof(AudioSource))]
     public class FPCtrl : MonoBehaviour
     {
-        [SerializeField]
-        private bool m_IsWalking;
-        [SerializeField]
-        private float m_WalkSpeed;
-        [SerializeField]
-        private float m_RunSpeed;
-        [SerializeField]
-        [Range(0f, 1f)]
-        private float m_RunstepLenghten;
-        [SerializeField]
-        private float m_JumpSpeed;
-        [SerializeField]
-        private float m_StickToGroundForce;
-        [SerializeField]
-        private float m_GravityMultiplier;
-        [SerializeField]
-        private MLook m_MouseLook;
-        [SerializeField]
-        private bool m_UseFovKick;
-        [SerializeField]
-        private FOVZoom m_FovKick = new FOVZoom();
-        [SerializeField]
-        private bool m_UseHeadBob;
-        [SerializeField]
-        private CurveCtrlBob m_HeadBob = new CurveCtrlBob();
-        [SerializeField]
-        private LerpCtrlBob m_JumpBob = new LerpCtrlBob();
-        [SerializeField]
-        private float m_StepInterval;
+        [SerializeField] private bool m_IsWalking;
+        [SerializeField] private float m_WalkSpeed;
+        [SerializeField] private float m_RunSpeed;
+        [SerializeField] [Range(0f, 1f)] private float m_RunstepLenghten;
+        [SerializeField] private float m_JumpSpeed;
+        [SerializeField] private float m_StickToGroundForce;
+        [SerializeField] private float m_GravityMultiplier;
+        [SerializeField] private MLook m_MouseLook;
+        [SerializeField] private bool m_UseFovKick;
+        [SerializeField] private FOVZoom m_FovKick = new FOVZoom();
+        [SerializeField] private bool m_UseHeadBob;
+        [SerializeField] private CurveCtrlBob m_HeadBob = new CurveCtrlBob();
+        [SerializeField] private LerpCtrlBob m_JumpBob = new LerpCtrlBob();
+        [SerializeField] private float m_StepInterval;
 
 
         private Camera m_Camera;
@@ -86,6 +71,7 @@ namespace UnitySA.Characters.FirstPerson
                 m_MoveDir.y = 0f;
                 m_Jumping = false;
             }
+
             if (!m_CharacterController.isGrounded && !m_Jumping && m_PreviouslyGrounded)
             {
                 m_MoveDir.y = 0f;
@@ -93,9 +79,6 @@ namespace UnitySA.Characters.FirstPerson
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
         }
-
-
-
 
 
         private void FixedUpdate()
@@ -108,7 +91,7 @@ namespace UnitySA.Characters.FirstPerson
             // get a normal for the surface that is being touched to move along it
             RaycastHit hitInfo;
             Physics.SphereCast(transform.position, m_CharacterController.radius, Vector3.down, out hitInfo,
-                               m_CharacterController.height / 2f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
+                m_CharacterController.height / 2f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
             desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal).normalized;
 
             m_MoveDir.x = desiredMove.x * speed;
@@ -131,6 +114,7 @@ namespace UnitySA.Characters.FirstPerson
             {
                 m_MoveDir += Physics.gravity * m_GravityMultiplier * Time.fixedDeltaTime;
             }
+
             m_CollisionFlags = m_CharacterController.Move(m_MoveDir * Time.fixedDeltaTime);
 
             ProgressStepCycle(speed);
@@ -140,14 +124,13 @@ namespace UnitySA.Characters.FirstPerson
         }
 
 
-
-
         private void ProgressStepCycle(float speed)
         {
             if (m_CharacterController.velocity.sqrMagnitude > 0 && (m_Input.x != 0 || m_Input.y != 0))
             {
-                m_StepCycle += (m_CharacterController.velocity.magnitude + (speed * (m_IsWalking ? 1f : m_RunstepLenghten))) *
-                             Time.fixedDeltaTime;
+                m_StepCycle += (m_CharacterController.velocity.magnitude +
+                                (speed * (m_IsWalking ? 1f : m_RunstepLenghten))) *
+                               Time.fixedDeltaTime;
             }
 
             if (!(m_StepCycle > m_NextStep))
@@ -165,11 +148,12 @@ namespace UnitySA.Characters.FirstPerson
             {
                 return;
             }
+
             if (m_CharacterController.velocity.magnitude > 0 && m_CharacterController.isGrounded)
             {
                 m_Camera.transform.localPosition =
                     m_HeadBob.DoHeadBob(m_CharacterController.velocity.magnitude +
-                                      (speed * (m_IsWalking ? 1f : m_RunstepLenghten)));
+                                        (speed * (m_IsWalking ? 1f : m_RunstepLenghten)));
                 newCameraPosition = m_Camera.transform.localPosition;
                 newCameraPosition.y = m_Camera.transform.localPosition.y - m_JumpBob.Offset();
             }
@@ -178,6 +162,7 @@ namespace UnitySA.Characters.FirstPerson
                 newCameraPosition = m_Camera.transform.localPosition;
                 newCameraPosition.y = m_OriginalCameraPosition.y - m_JumpBob.Offset();
             }
+
             m_Camera.transform.localPosition = newCameraPosition;
         }
 
@@ -234,6 +219,7 @@ namespace UnitySA.Characters.FirstPerson
             {
                 return;
             }
+
             body.AddForceAtPosition(m_CharacterController.velocity * 0.1f, hit.point, ForceMode.Impulse);
         }
     }

@@ -38,13 +38,11 @@ public abstract class Health : MonoBehaviour
 
     public List<PeriodicDamage> listPeriodicDamage = new List<PeriodicDamage>();
 
-    [Header("Dissolve")]
-    public List<SkinnedMeshRenderer> listDissolveTarget = new List<SkinnedMeshRenderer>();
+    [Header("Dissolve")] public List<SkinnedMeshRenderer> listDissolveTarget = new List<SkinnedMeshRenderer>();
     public Material dissolverMaterial;
     public bool enableDissolve = false;
 
-    [Header("Blood")]
-    public List<EasyDecal> listBloodDecal = new List<EasyDecal>();
+    [Header("Blood")] public List<EasyDecal> listBloodDecal = new List<EasyDecal>();
     public GameObject floorBloodDecal;
     private int stepBloodDecal = 0;
 
@@ -56,7 +54,7 @@ public abstract class Health : MonoBehaviour
         locomotion = GetComponent<Locomotion>();
         characterStats = GetComponent<CharacterStats>();
 
-        for(int i=0; i<listBloodDecal.Count; i++)
+        for (int i = 0; i < listBloodDecal.Count; i++)
         {
             listBloodDecal[i].gameObject.SetActive(false);
         }
@@ -75,18 +73,19 @@ public abstract class Health : MonoBehaviour
                 listPeriodicDamage[i].iterationCurTime = 0;
             }
 
-            if(listPeriodicDamage[i].timeCur >= listPeriodicDamage[i].time)
+            if (listPeriodicDamage[i].timeCur >= listPeriodicDamage[i].time)
             {
                 listPeriodicDamage.RemoveAt(i);
                 return;
             }
         }
 
-        if(enableDissolve && isContantGround)
+        if (enableDissolve && isContantGround)
         {
-            for(int i=0; i<listDissolveTarget.Count; i++)
+            for (int i = 0; i < listDissolveTarget.Count; i++)
             {
-                listDissolveTarget[i].material.SetFloat("_Height", Mathf.Lerp(listDissolveTarget[i].material.GetFloat("_Height"), -2, 0.05f));
+                listDissolveTarget[i].material.SetFloat("_Height",
+                    Mathf.Lerp(listDissolveTarget[i].material.GetFloat("_Height"), -2, 0.05f));
             }
         }
     }
@@ -112,10 +111,11 @@ public abstract class Health : MonoBehaviour
             return;
         }
 
-        if (locomotion.typeLocomotion == Locomotion.TLocomotion.Attack && locomotion.animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.4f)
+        if (locomotion.typeLocomotion == Locomotion.TLocomotion.Attack &&
+            locomotion.animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.4f)
         {
-            Debug.Log("Crytical damage ->>>>>>>>>>>>>>>>>>>>>> " + (int)(damageValue * 1.5f));
-            currentHealth -= (int)(damageValue * 1.5f);
+            Debug.Log("Crytical damage ->>>>>>>>>>>>>>>>>>>>>> " + (int) (damageValue * 1.5f));
+            currentHealth -= (int) (damageValue * 1.5f);
         }
         else
         {
@@ -168,7 +168,10 @@ public abstract class Health : MonoBehaviour
 
             stepBloodDecal++;
 
-            if (stepBloodDecal >= listBloodDecal.Count) { stepBloodDecal = 0; }
+            if (stepBloodDecal >= listBloodDecal.Count)
+            {
+                stepBloodDecal = 0;
+            }
         }
     }
 
@@ -199,7 +202,7 @@ public abstract class Health : MonoBehaviour
     {
         int resultDamage = startDamage;
 
-        if(BackDamage())
+        if (BackDamage())
         {
             resultDamage += startDamage * 25 / 100;
             Debug.Log("Back damage bonus: " + startDamage * 25 / 100);
@@ -213,7 +216,7 @@ public abstract class Health : MonoBehaviour
         Ray ray = new Ray(transform.position, -transform.forward);
         RaycastHit hit;
 
-        if(Physics.Raycast(ray, out hit, 3f))
+        if (Physics.Raycast(ray, out hit, 3f))
         {
             return true;
         }

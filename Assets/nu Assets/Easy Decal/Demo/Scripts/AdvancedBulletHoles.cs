@@ -25,6 +25,7 @@ namespace ch.sycoforge.Decal.Demo
             {
                 Debug.LogError("The AdvancedBulletHoles script has no decal prefab attached.");
             }
+
             EasyDecal.HideMesh = false;
         }
 
@@ -44,13 +45,13 @@ namespace ch.sycoforge.Decal.Demo
                     GameObject parent = initialHit.collider.gameObject;
                     Vector3 position = initialHit.point;
 
-                    RaycastHit[] hits = Physics.SphereCastAll(ray, CastRadius, Vector3.Distance(Camera.main.transform.position, position) + 2);
+                    RaycastHit[] hits = Physics.SphereCastAll(ray, CastRadius,
+                        Vector3.Distance(Camera.main.transform.position, position) + 2);
                     Vector3 averageNormal = initialHit.normal;
 
                     // Check if sphere cast hit something
                     if (hits.Length > 0)
                     {
-
                         foreach (RaycastHit hit in hits)
                         {
                             // Draw a line along the projection axis for visalizing the projection process.
@@ -67,7 +68,7 @@ namespace ch.sycoforge.Decal.Demo
                     // Instantiate the decal prefab according the hit normal
                     EasyDecal.ProjectAt(DecalPrefab.gameObject, parent, position, averageNormal);
 
-                    if(ImpactParticles != null)
+                    if (ImpactParticles != null)
                     {
                         Quaternion rot = Quaternion.FromToRotation(Vector3.up, averageNormal);
 

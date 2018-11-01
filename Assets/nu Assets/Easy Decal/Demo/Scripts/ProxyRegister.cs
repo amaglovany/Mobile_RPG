@@ -9,7 +9,6 @@ namespace ch.sycoforge.Decal.Demo
     /// </summary>
     public class ProxyRegister : MonoBehaviour
     {
-
         //------------------------------------
         // Exposed Fields
         //------------------------------------
