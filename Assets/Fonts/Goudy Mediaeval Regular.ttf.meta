@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: fbebfff6549b33d44abf37f0f34e0135
+timeCreated: 1522422481
+licenseType: Pro
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Goudy Mediaeval
+  fontNames:
+  - Goudy Mediaeval
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 2b41fa2b2b31bcc41b7e7b5c6b47deb1, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

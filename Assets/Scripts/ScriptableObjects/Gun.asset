@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b5f569208e99db4ba9af20395badb6b, type: 3}
+  m_Name: Gun
+  m_EditorClassIdentifier: 
+  type: 0
+  itemName: Gun
+  itemSprite: {fileID: 21300000, guid: 195de6cad39802f45b27fb67c7da5b50, type: 3}
+  itemDescription: Gun
+  itemActivePrefab: {fileID: 1027741271538456, guid: 7265af3138f371a44880959fe8ead8c1,
+    type: 2}
+  itemPassivePrefab: {fileID: 1749341875852284, guid: 2b3c0bd158b35ed47ad4a9754ee855e1,
+    type: 2}
+  DamageType: 0
+  animatorIDWeapon: 1
+  minDamage: 25
+  maxDamage: 35
+  rangeAttack: 1
+  rangeMaxDistance: 0
+  Range: 1
+  Speed: 0
+  fireEffect: {fileID: 0}
+  staminaConsume: 0

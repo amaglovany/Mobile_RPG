@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b5f569208e99db4ba9af20395badb6b, type: 3}
+  m_Name: Saw
+  m_EditorClassIdentifier: 
+  type: 0
+  itemName: Saw
+  itemSprite: {fileID: 21300000, guid: 8c2eeb529be46d949bc83da4c0b4a4e9, type: 3}
+  itemDescription: Sharp, versatile saw. (Bones included)
+  itemActivePrefab: {fileID: 1741675144258840, guid: 1bb0c3f83a6ea49408ce24dafea5ec7d,
+    type: 2}
+  itemPassivePrefab: {fileID: 1504315475700426, guid: 929c7d88b83cac7409849fc0f1e63346,
+    type: 2}
+  DamageType: 0
+  minDamage: 31
+  maxDamage: 36
+  Range: 0
+  Speed: 1
+  staminaConsume: 13
