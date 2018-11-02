@@ -80,6 +80,7 @@ public class LocomotionPlayer : Locomotion
 
     public void DisableWeapon()
     {
+        
         PlayerData.Instance.DisableWeaponColliders();
     }
 
